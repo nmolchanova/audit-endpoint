@@ -4,6 +4,7 @@ variables:
       type: array
       default:
         - linux-benchmark
+        - linux-cis
 
   AUDIT_AGENT_RULES_LIST:
       required: false
