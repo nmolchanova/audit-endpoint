@@ -3,7 +3,6 @@ variables:
       required: false
       type: array
       default:
-        - linux-cis
         - linux-benchmark
 
   AUDIT_AGENT_RULES_LIST:
