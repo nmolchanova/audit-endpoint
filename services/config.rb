@@ -81,6 +81,6 @@ end
 
 coreo_agent_rule_runner 'agent-rules' do
   action :run
-  rules ${AUDIT_AGENT_RULES_LIST}
-  profiles ${AUDIT_AGENT_PROFILES_LIST}
+  rules ${AUDIT_AGENT_RULES_ALERT_LIST}
+  profiles ${AUDIT_AGENT_PROFILES_ALERT_LIST}
 end
