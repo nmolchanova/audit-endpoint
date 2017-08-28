@@ -1,12 +1,12 @@
 variables:
-  AUDIT_AGENT_PROFILES_LIST:
+  AUDIT_AGENT_PROFILES_ALERT_LIST:
       required: false
       type: array
       default:
         - linux-benchmark
         - linux-cis
 
-  AUDIT_AGENT_RULES_LIST:
+  AUDIT_AGENT_RULES_ALERT_LIST:
       required: false
       type: array
       default:
