@@ -10,7 +10,7 @@ variables:
       required: false
       type: array
       default:
-        - echo-hello
+        - check-linux-inventory
         - env-user-password
         
   FILTERED_OBJECTS:

@@ -1,29 +1,10 @@
-coreo_agent_selector_rule 'check-echo' do
-  action :define
-  timeout 30
-  control 'check if echo exist' do
-    describe command('echo') do
-      it { should exist }
-    end
-  end
-end
 
-coreo_agent_audit_rule 'echo-hello' do
+coreo_agent_selector_rule 'check-linux' do
   action :define
-  link 'http://kb.cloudcoreo.com/'
-  display_name 'Echo hello'
-  description 'Echo hello and check for the output'
-  category 'Security'
-  suggested_action 'Make sure hello is the output.'
-  level 'low'
-  selectors ['check-echo']
   timeout 30
-  control 'echo-hello' do
-    impact 1.0
-    describe command('echo hello') do
-      its('stdout') { should eq "world\n" }
-      its('stderr') { should eq '' }
-      its('exit_status') { should eq 0 }
+  control 'check-linux' do
+    describe command('uname') do
+      its('stdout') { should eq "Linux\n" }
     end
   end
 end
@@ -36,6 +17,23 @@ coreo_agent_selector_rule "check-mongod" do
       it { should exist }
     end
   end
+end
+
+coreo_agent_audit_rule 'check-linux-inventory' do
+  action :define
+  link "http://kb.cloudcoreo.com/"
+  display_name "Check linux inventory"
+  description "Check for linux servers."
+  category "Inventory"
+  suggested_action ""
+  level "Low"
+  selectors ['check-linux']
+  control 'run-echo' do
+    describe command('echo') do      
+      it { should exist }      
+    end
+  end
+  timeout 30
 end
 
 coreo_agent_audit_rule 'env-user-password' do
@@ -55,15 +53,6 @@ coreo_agent_audit_rule 'env-user-password' do
   timeout 30
 end
 
-coreo_agent_selector_rule 'check-linux' do
-  action :define
-  timeout 30
-  control 'check-linux' do
-    describe command('uname') do
-      its('stdout') { should eq "Linux\n" }
-    end
-  end
-end
   
 coreo_agent_audit_profile 'linux-benchmark' do
   action :define
