@@ -5,6 +5,7 @@ variables:
       default:
         - linux-benchmark
         - linux-cis
+        - docker-cis
 
   AUDIT_AGENT_RULES_ALERT_LIST:
       required: false
