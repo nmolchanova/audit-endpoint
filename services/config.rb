@@ -65,6 +65,16 @@ coreo_agent_selector_rule 'check-linux' do
   end
 end
   
+coreo_agent_selector_rule 'check-docker' do
+  action :define
+  timeout 30
+  control 'check-docker' do
+    describe command('docker') do
+       it { should exist }
+    end
+  end
+end
+
 coreo_agent_audit_profile 'linux-benchmark' do
   action :define
   selectors ['check-linux']
@@ -76,6 +86,13 @@ coreo_agent_audit_profile 'linux-cis' do
   action :define
   selectors ['check-linux']
   profile 'https://github.com/coolguru/cis-dil-benchmark/archive/master.zip'
+  timeout 120
+end
+
+coreo_agent_audit_profile 'docker-cis' do
+  action :define
+  selectors ['check-docker']
+  profile 'https://github.com/coolguru/cis-docker-benchmark/archive/master.zip'
   timeout 120
 end
 
