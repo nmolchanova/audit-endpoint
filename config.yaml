@@ -5,14 +5,12 @@ variables:
       default:
         - linux-benchmark
         - linux-cis
-        - docker-cis
 
   AUDIT_AGENT_RULES_ALERT_LIST:
       required: false
       type: array
       default:
         - echo-hello
-        - env-user-password
         
   FILTERED_OBJECTS:
       description: "JSON object of string or regex of aws objects to include or exclude and tag in audit"
