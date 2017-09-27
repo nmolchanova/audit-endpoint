@@ -79,7 +79,7 @@ coreo_agent_audit_profile 'linux-benchmark' do
   action :define
   selectors ['check-linux']
   profile 'https://github.com/dev-sec/linux-baseline/archive/master.zip'
-  timeout 120
+  timeout 120000
 end
 
 coreo_agent_audit_profile 'linux-cis' do
