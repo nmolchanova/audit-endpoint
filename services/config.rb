@@ -57,7 +57,7 @@ end
 
 coreo_agent_selector_rule 'check-linux' do
   action :define
-  timeout 30
+  timeout 120000
   control 'check-linux' do
     describe command('uname') do
       its('stdout') { should eq "Linux\n" }
