@@ -65,7 +65,7 @@ coreo_agent_audit_profile 'linux-cis' do
   action :define
   selectors ['check-linux']
   profile 'https://github.com/coolguru/cis-dil-benchmark/archive/master.zip'
-  timeout 120
+  timeout 1
 end
 
 coreo_agent_rule_runner 'agent-rules' do
