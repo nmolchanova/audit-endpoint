@@ -64,6 +64,16 @@ coreo_agent_selector_rule 'check-linux' do
     end
   end
 end
+
+coreo_agent_selector_rule 'check-windows' do
+  action :define
+  timeout 120
+  control 'check-linux' do
+    describe command('uname') do
+      its('stdout') { should eq "Linux\n" }
+    end
+  end
+end
   
 coreo_agent_selector_rule 'check-docker' do
   action :define
@@ -93,6 +103,12 @@ coreo_agent_audit_profile 'docker-cis' do
   action :define
   selectors ['check-docker']
   profile 'https://github.com/coolguru/cis-docker-benchmark/archive/master.zip'
+  timeout 120
+end
+
+coreo_agent_audit_profile 'windows-benchmark' do
+  action :define
+  profile 'https://github.com/dev-sec/windows-baseline/archive/master.zip'
   timeout 120
 end
 
