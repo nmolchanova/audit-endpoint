@@ -65,16 +65,6 @@ coreo_agent_selector_rule 'check-linux' do
   end
 end
 
-coreo_agent_selector_rule 'check-windows' do
-  action :define
-  timeout 120
-  control 'check-linux' do
-    describe command('uname') do
-      its('stdout') { should eq "Linux\n" }
-    end
-  end
-end
-  
 coreo_agent_selector_rule 'check-docker' do
   action :define
   timeout 30
