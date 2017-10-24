@@ -5,6 +5,10 @@ variables:
       default:
         - linux-benchmark
         - linux-cis
+        - docker-cis
+        - windows-benchmark
+        - windows-patch-baseline
+        - ssl-baseline
 
   AUDIT_AGENT_RULES_ALERT_LIST:
       required: false
