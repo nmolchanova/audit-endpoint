@@ -102,6 +102,18 @@ coreo_agent_audit_profile 'windows-benchmark' do
   timeout 120
 end
 
+coreo_agent_audit_profile 'windows-patch-baseline' do
+  action :define
+  profile 'https://github.com/dev-sec/windows-patch-baseline/archive/master.zip'
+  timeout 120
+end
+
+coreo_agent_audit_profile 'ssl-baseline' do
+  action :define
+  profile 'https://github.com/dev-sec/ssl-baseline/archive/master.zip'
+  timeout 120
+end
+
 coreo_agent_rule_runner 'agent-rules' do
   action :run
   rules ${AUDIT_AGENT_RULES_ALERT_LIST}
