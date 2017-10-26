@@ -1,5 +1,5 @@
 variables:
-  AUDIT_AGENT_PROFILES_ALERT_LIST:
+  AUDIT_AGENT_ENDPOINT_PROFILES_ALERT_LIST:
       required: false
       type: array
       default:
@@ -9,12 +9,6 @@ variables:
         - windows-benchmark
         - windows-patch-baseline
         - ssl-baseline
-
-  AUDIT_AGENT_RULES_ALERT_LIST:
-      required: false
-      type: array
-      default:
-        - echo-hello
         
   FILTERED_OBJECTS:
       description: "JSON object of string or regex of aws objects to include or exclude and tag in audit"
