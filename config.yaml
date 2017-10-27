@@ -9,7 +9,7 @@ variables:
         - windows-benchmark
         - windows-patch-baseline
         - ssl-baseline
-   AUDIT_AGENT_PROFILES_ALERT_LIST:
+  AUDIT_AGENT_PROFILES_ALERT_LIST:
       required: false
       type: array
       default:
