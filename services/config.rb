@@ -28,7 +28,7 @@ coreo_agent_audit_rule 'echo-hello' do
   end
 end
 
-coreo_agent_audit_rule 'cis-kubernetes-benchmark-1.1.2' do
+coreo_agent_audit_rule 'cis-kubernetes-benchmark-1-1-2' do
   action :define
   link 'http://kb.cloudcoreo.com/'
   display_name 'Ensure that the --anonymous-auth argument is set to false'
