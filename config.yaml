@@ -14,7 +14,7 @@ variables:
       type: array
       default:
         - echo-hello
-        - cis-kubernetes-benchmark-1.1.2
+        - cis-kubernetes-benchmark-1-1-2
         
   FILTERED_OBJECTS:
       description: "JSON object of string or regex of aws objects to include or exclude and tag in audit"
