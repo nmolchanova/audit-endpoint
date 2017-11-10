@@ -86,22 +86,22 @@ coreo_agent_audit_rule 'cis-kubernetes-benchmark-1-1-22' do
   end
 end
 
-coreo_agent_audit_rule 'cis-kubernetes-benchmark-1-1-4' do
+coreo_agent_audit_rule 'cis-kubernetes-benchmark-1-1-2' do
   action :define
   link 'http://kb.cloudcoreo.com/'
-  display_name 'Ensure that the --insecure-allow-any-token argument is not set'
-  description 'Do not allow any insecure tokens\n\nRationale: Accepting insecure tokens would allow any token without actually authenticating anything. User information is parsed from the token and connections are allowed.'
+  display_name 'Ensure that the --anonymous-auth argument is set to false'
+  description 'Disable anonymous requests to the API server.\n\nRationale: When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the API server. You should rely on authentication to authorize access and disallow anonymous requests.'
   category 'Security'
-  suggested_action 'None'
-  level 'low'
+  suggested_action 'Disable anonymous requests to the API server.\n\nRationale: When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the API server. You should rely on authentication to authorize access and disallow anonymous requests.'
+  level 'high'
   selectors ['check-kubectl']
   timeout 120
-  control 'cis-kubernetes-benchmark-1.1.4' do
-    title 'Ensure that the --insecure-allow-any-token argument is not set'
-    desc "Do not allow any insecure tokens\n\nRationale: Accepting insecure tokens would allow any token without actually authenticating anything. User information is parsed from the token and connections are allowed."
+  control 'cis-kubernetes-benchmark-1.1.2' do
+    title 'Ensure that the --anonymous-auth argument is set to false'
+    desc "Disable anonymous requests to the API server.\n\nRationale: When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the API server. You should rely on authentication to authorize access and disallow anonymous requests."
     impact 1.0
 
-    tag cis: 'kubernetes:1.1.4'
+    tag cis: 'kubernetes:1.1.2'
     tag level: 1
 
     describe processes('kube-apiserver').commands.to_s do
