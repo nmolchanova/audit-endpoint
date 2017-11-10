@@ -65,14 +65,14 @@ end
 coreo_agent_audit_rule 'cis-kubernetes-benchmark-1-1-22' do
   action :define
   link 'http://kb.cloudcoreo.com/'
-  display_name 'Ensure that the --kubelet-certificate-authority argument is set as appropriate'
-  description 'Verify kubelets certificate before establishing connection.\n\nRationale: The connections from the apiserver to the kubelet are used for fetching logs for pods, attaching (through kubectl) to running pods, and using the kubelet’s port-forwarding functionality. These connections terminate at the kubelet’s HTTPS endpoint. By default, the apiserver does not verify the kubelet’s serving certificate, which makes the connection subject to man-in-the-middle attacks, and unsafe to run over untrusted and/or public networks.'
+  display_name 'Ensure that the --anonymous-auth argument is set to false'
+  description 'Disable anonymous requests to the API server.\n\nRationale: When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the API server. You should rely on authentication to authorize access and disallow anonymous requests.'
   category 'Security'
   suggested_action 'Disable anonymous requests to the API server.\n\nRationale: When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the API server. You should rely on authentication to authorize access and disallow anonymous requests.'
   level 'high'
   selectors ['check-kubectl']
   timeout 120
-  control 'cis-kubernetes-benchmark-1.1.22' do
+  control 'cis-kubernetes-benchmark-1.1.2' do
     title 'Ensure that the --kubelet-certificate-authority argument is set as appropriate'
     desc "Verify kubelet's certificate before establishing connection.\n\nRationale: The connections from the apiserver to the kubelet are used for fetching logs for pods, attaching (through kubectl) to running pods, and using the kubelet’s port-forwarding functionality. These connections terminate at the kubelet’s HTTPS endpoint. By default, the apiserver does not verify the kubelet’s serving certificate, which makes the connection subject to man-in-the-middle attacks, and unsafe to run over untrusted and/or public networks."
     impact 1.0
