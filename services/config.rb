@@ -28,6 +28,30 @@ coreo_agent_audit_rule 'echo-hello' do
   end
 end
 
+coreo_agent_audit_rule 'cis-kubernetes-benchmark-1.1.2' do
+  action :define
+  link 'http://kb.cloudcoreo.com/'
+  display_name 'Ensure that the --anonymous-auth argument is set to false'
+  description 'Disable anonymous requests to the API server.\n\nRationale: When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the API server. You should rely on authentication to authorize access and disallow anonymous requests.'
+  category 'Security'
+  suggested_action 'Disable anonymous requests to the API server.\n\nRationale: When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the API server. You should rely on authentication to authorize access and disallow anonymous requests.'
+  level 'low'
+  selectors ['check-echo']
+  timeout 120
+  control 'cis-kubernetes-benchmark-1.1.2' do
+    title 'Ensure that the --anonymous-auth argument is set to false'
+    desc "Disable anonymous requests to the API server.\n\nRationale: When enabled, requests that are not rejected by other configured authentication methods are treated as anonymous requests. These requests are then served by the API server. You should rely on authentication to authorize access and disallow anonymous requests."
+    impact 1.0
+
+    tag cis: 'kubernetes:1.1.2'
+    tag level: 1
+
+    describe processes('kube-apiserver').commands.to_s do
+      it { should match(/--anonymous-auth=false/) }
+    end
+  end
+end
+
 coreo_agent_selector_rule "check-mongod" do
   action :define
   timeout 30
