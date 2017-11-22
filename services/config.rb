@@ -1,10 +1,10 @@
 
-coreo_agent_selector_rule 'check-linux' do
+coreo_agent_selector_rule 'check-redhat' do
   action :define
   timeout 30
-  control 'check-linux' do
-    describe command('uname') do
-      its('stdout') { should eq "Linux\n" }
+  control 'check-redhat' do
+    describe os.redhat? do
+      it { should eq true }
     end
   end
 end
@@ -63,7 +63,7 @@ end
 
 coreo_agent_audit_profile 'linux-cis' do
   action :define
-  selectors ['check-linux']
+  selectors ['check-redhat']
   profile 'https://github.com/coolguru/cis-dil-benchmark/archive/master.zip'
   timeout 1
 end
