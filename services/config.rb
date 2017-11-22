@@ -1,9 +1,9 @@
 
-coreo_agent_selector_rule 'check-redhat' do
+coreo_agent_selector_rule 'check-debian' do
   action :define
   timeout 30
-  control 'check-redhat' do
-    describe os.redhat? do
+  control 'check-debian' do
+    describe os.debian? do
       it { should eq true }
     end
   end
@@ -63,7 +63,7 @@ end
 
 coreo_agent_audit_profile 'linux-cis' do
   action :define
-  selectors ['check-redhat']
+  selectors ['check-debian']
   profile 'https://github.com/coolguru/cis-dil-benchmark/archive/master.zip'
   timeout 100
 end
